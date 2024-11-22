@@ -1,0 +1,43 @@
+const express = require('express');
+const cors = require('cors');
+const session = require('express-session');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const sequelize = require('./config/db');
+
+
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+
+// session setup
+app.use(session({ 
+    secret: process.env.SESSION_SECRET, 
+    resave: false, 
+    saveUninitialized: false, 
+    store: new SequelizeStore({ db: sequelize }), 
+    cookie: { maxAge: 1000 * 60 * 60 * 24 }  
+}));
+
+// init the database using sequelize
+sequelize.authenticate().then(() => { 
+    console.log('Connection has been established successfully.'); 
+    return sequelize.sync({ alter: true });
+}).then(() => { 
+    console.log('Database synced'); 
+}).catch(err => { 
+    console.error('Error syncing database:', err); });
+
+// Configuring Routes
+const authRoute = require('./routes/authRoute');
+const resourceRoute = require('./routes/resourceRoute');
+
+// using the routes
+app.use('/routes/auth', authRoute);
+app.use('/routes/resources', resourceRoute);
+
+
+
+app.listen(5000, () =>{
+    console.log("Server running on port: 5000")
+});
