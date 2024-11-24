@@ -1,5 +1,5 @@
 // aggregater for the models
-const User = require('./users');
+const User = require('./user');
 const Resource = require('./resource');
 
 module.exports = {

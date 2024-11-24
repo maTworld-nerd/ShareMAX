@@ -1,4 +1,4 @@
-const User = require('../models/User');
+const User = require('../models');
 const bcrypt = require('bcrypt');
 
 const registerUser = async (req, res) => {
@@ -11,6 +11,7 @@ const registerUser = async (req, res) => {
         res.status(500).json({ error: 'Failed to register user' });
     }
 };
+
 
 const loginUser = async (req, res) => {
     // Logic for login will go here.
