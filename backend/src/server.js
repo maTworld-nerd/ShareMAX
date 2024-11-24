@@ -3,6 +3,7 @@ const cors = require('cors');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sequelize = require('./config/db');
+require('dotenv').config();
 
 
 const app = express();
@@ -41,3 +42,5 @@ app.use('/routes/resources', resourceRoute);
 app.listen(5000, () =>{
     console.log("Server running on port: 5000")
 });
+
+

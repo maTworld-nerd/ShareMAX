@@ -2,6 +2,37 @@
 // importing modules
 const express = require('express');
 const router = express.Router();
+const bcrypt = require('bcrypt');
+
+
+// Register route
+router.post('/register', async (req, res) => {
+  const { username, password } = req.body;
+
+  // Validate inputs
+  if (!username || !password) {
+    return res.status(400).json({ message: 'Username and password are required' });
+  }
+
+  // Check if the user already exists
+  const userExists = users.find(u => u.username === username);
+  if (userExists) {
+    return res.status(400).json({ message: 'User already exists' });
+  }
+
+  try {
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Save the user (for demo purposes, we're using an array; replace with DB)
+    users.push({ username, password: hashedPassword });
+
+    res.status(201).json({ message: 'User registered successfully' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
 
 // Login route
 router.post('/login', (req, res) => {
@@ -11,7 +42,7 @@ router.post('/login', (req, res) => {
     req.session.user = { username };
     res.json({ message: 'Login successful' });
   } else {
-    res.status(401).json({ message: 'Invalid' });
+    res.status(401).json({ message: 'Invalid' });       
   }
 });
 
