@@ -1,4 +1,4 @@
-const { Resource } = require('./models');
+const { Resource } = require('../models');
 
 exports.getAllResources = async (req, res) => {
   try {
