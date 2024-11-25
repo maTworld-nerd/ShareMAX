@@ -23,14 +23,14 @@ const loginUser = async (req, res) => {
             res.status(401).json({ message: 'Invalid credentials' });
         }
     } catch (error) {
-        res.status(500).json({ error: 'Failed to log in' });
+        res.status(500).json({ error: 'Login Failed!' });
     }
 };
 
 const logoutUser = (req, res) => {
     req.session.destroy(err => {
         if (err) {
-            return res.status(500).json({ message: 'Failed to log out' });
+            return res.status(500).json({ message: 'Log out Failed!' });
         }
         res.clearCookie('connect.sid');
         res.json({ message: 'Logged out' });
