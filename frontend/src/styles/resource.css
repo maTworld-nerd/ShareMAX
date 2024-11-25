@@ -1,0 +1,85 @@
+/* resource styling */
+
+.resource-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .resource-container h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .resource-container ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .resource-container ul li {
+    background: #f9f9f9;
+    margin-bottom: 0.5rem;
+    padding: 0.75rem;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .resource-container form {
+    margin-top: 1rem;
+  }
+  
+  .resource-container form div {
+    margin-bottom: 1rem;
+  }
+  
+  .resource-container form label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .resource-container form input[type="text"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .resource-container form button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #4CAF50; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .resource-container form button:hover {
+    background-color: #45a049; 
+  }
+  
+  .resource-container button {
+    margin-left: 0.5rem;
+    padding: 0.5rem;
+    background-color: #f44336; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .resource-container button:hover {
+    background-color: #d32f2f; 
+  }
+  
+  .error {
+    color: red;
+    text-align: center;
+  }
+  

@@ -85,7 +85,7 @@
   form button {
     width: 100%;
     padding: 0.75rem;
-    background-color: #4CAF50; /* Green */
+    background-color: green; 
     color: white;
     border: none;
     border-radius: 5px;
@@ -93,7 +93,7 @@
   }
   
   form button:hover {
-    background-color: #45a049; /* Darker Green */
+    background-color: darkgreen; 
   }
   
   /* General layout styles */
