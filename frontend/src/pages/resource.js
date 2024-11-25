@@ -12,7 +12,7 @@ function Resource() {
   useEffect(() => {
     const fetchResources = async () => {
       try {
-        const response = await axios.get('/routes/resources');
+        const response = await axios.get('/routes/resourceRoute');
         setResources(response.data);
         setLoading(false);
       } catch (error) {
@@ -27,7 +27,7 @@ function Resource() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/routes/resources', { name, description });
+      const response = await axios.post('/routes/resourceRoute', { name, description });
       setResources([...resources, response.data]);
       setName('');
       setDescription('');
@@ -39,7 +39,7 @@ function Resource() {
   const handleUpdate = async (id) => {
     try {
       const updatedResource = { name, description };
-      const response = await axios.put(`/routes/resources/${id}`, updatedResource);
+      const response = await axios.put(`/routes/resourceRoute/${id}`, updatedResource);
       setResources(resources.map(resource => (resource.id === id ? response.data : resource)));
       setName('');
       setDescription('');
@@ -50,7 +50,7 @@ function Resource() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/routes/resources/${id}`);
+      await axios.delete(`/routes/resourceRoute/${id}`);
       setResources(resources.filter(resource => resource.id !== id));
     } catch (error) {
       setError('Failed to delete resource');
