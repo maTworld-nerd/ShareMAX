@@ -1,4 +1,4 @@
-const User = require('../models');
+const { User } = require('../models');
 const bcrypt = require('bcrypt');
 
 const registerUser = async (req, res) => {
@@ -12,9 +12,29 @@ const registerUser = async (req, res) => {
     }
 };
 
-
 const loginUser = async (req, res) => {
-    // Logic for login 
+    try {
+        const { email, password } = req.body;
+        const user = await User.findOne({ where: { email } });
+        if (user && await bcrypt.compare(password, user.password)) {
+            req.session.user = user;
+            res.json({ message: 'Logged in' });
+        } else {
+            res.status(401).json({ message: 'Invalid credentials' });
+        }
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to log in' });
+    }
 };
 
-module.exports = { registerUser, loginUser };
+const logoutUser = (req, res) => {
+    req.session.destroy(err => {
+        if (err) {
+            return res.status(500).json({ message: 'Failed to log out' });
+        }
+        res.clearCookie('connect.sid');
+        res.json({ message: 'Logged out' });
+    });
+};
+
+module.exports = { registerUser, loginUser, logoutUser };
