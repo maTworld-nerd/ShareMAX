@@ -14,7 +14,7 @@ const registerUser = async (req, res) => {
 
 
 const loginUser = async (req, res) => {
-    // Logic for login will go here.
+    // Logic for login 
 };
 
 module.exports = { registerUser, loginUser };

@@ -24,7 +24,7 @@ router.post('/register', async (req, res) => {
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Save the user (for demo purposes, we're using an array; replace with DB)
+    // Save the user 
     users.push({ username, password: hashedPassword });
 
     res.status(201).json({ message: 'User registered successfully' });
