@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import API from '../services/api';
-import './resource.css'; 
+import '../styles/resource.css'; 
 
 function Resource() {
   const [resources, setResources] = useState([]);

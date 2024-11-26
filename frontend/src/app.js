@@ -9,7 +9,7 @@ import Footer from './components/footer';
 const App = () => {
     return (
         <Router>
-            {/* Header will appear on all pages */}
+            {}
             <Header />
             <main>
                 <Routes>
@@ -18,10 +18,11 @@ const App = () => {
                     <Route path="/register" element={<Register />} />
                 </Routes>
             </main>
-            {/* Footer will appear on all pages */}
+            {}
             <Footer />
         </Router>
     );
 };
 
 export default App;
+
