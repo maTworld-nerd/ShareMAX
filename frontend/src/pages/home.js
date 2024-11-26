@@ -1,18 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import API from '../services/api';
+// home page
+import React from 'react';
 
-const Home = () => {
-    const [message, setMessage] = useState('');
-
-    useEffect(() => {
-        API.get('/')
-            .then(response => setMessage(response.data))
-            .catch(err => console.error(err));
-    }, []);
-
-    return <h1>{message}</h1>;
-};
+function Home() {
+  return (
+    <div>
+      <h1>Welcome to ShareMax</h1>
+      <p>Your one-stop solution for sharing resources efficiently.</p>
+    </div>
+  );
+}
 
 export default Home;
-
-

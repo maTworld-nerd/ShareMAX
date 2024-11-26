@@ -1,6 +1,6 @@
 // src/pages/Register.js
 import React, { useState } from 'react';
-import axios from 'axios';
+import API from '../services/api';
 
 function Register() {
   const [name, setName] = useState('');
@@ -10,9 +10,9 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/routes/auth/register', { name, email, password });
+      const response = await API.post('/auth/register', { name, email, password });
       console.log(response.data);
-      // Handle successful registration 
+      // Handle for successful registration 
     } catch (error) {
       console.error('Registration failed:', error.response.data);
     }

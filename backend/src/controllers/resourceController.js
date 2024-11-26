@@ -1,6 +1,6 @@
 const { Resource } = require('../models');
 
-// Get all resources
+// Getting all resources
 const getResources = async (req, res) => {
   try {
     const resources = await Resource.findAll();
@@ -10,7 +10,7 @@ const getResources = async (req, res) => {
   }
 };
 
-// Add a new resource
+// Adding a new resource
 const addResource = async (req, res) => {
   try {
     const { name, description } = req.body;
@@ -21,7 +21,7 @@ const addResource = async (req, res) => {
   }
 };
 
-// Update a resource
+// Updating a resource
 const updateResource = async (req, res) => {
   try {
     const { id } = req.params;
@@ -40,7 +40,7 @@ const updateResource = async (req, res) => {
   }
 };
 
-// Delete a resource
+// Deleting a resource
 const deleteResource = async (req, res) => {
   try {
     const { id } = req.params;
