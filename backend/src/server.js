@@ -35,7 +35,7 @@ const resourceRoute = require('./routes/resourceRoute');
 
 // using the routes
 app.use('/routes/auth', authRoute);
-app.use('/routes/resources', resourceRoute);
+app.use('/routes/resource', resourceRoute);
 
 
 const PORT = process.env.PORT;
