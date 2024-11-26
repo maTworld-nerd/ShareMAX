@@ -57,3 +57,4 @@ const deleteResource = async (req, res) => {
 };
 
 module.exports = { getResources, addResource, updateResource, deleteResource };
+

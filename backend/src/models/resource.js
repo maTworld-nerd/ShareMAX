@@ -25,3 +25,4 @@ const Resource = sequelize.define('Resource', {
 });
 
 module.exports = Resource;
+
