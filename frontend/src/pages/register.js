@@ -1,45 +1,68 @@
-// src/pages/Register.js
-import React, { useState } from 'react';
-import API from '../services/api';
+import React from "react";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
-function Register() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+function Register () {
+  const [inputs, setInputs] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  const [err, setError] = useState(null);
 
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await API.post('/auth/register', { name, email, password });
-      console.log(response.data);
-      // Handle for successful registration 
-    } catch (error) {
+      await axios.post("/auth/register", inputs);
+      navigate("/login");
+    } catch (err) {
       console.error('Registration failed:', error.response.data);
+      
+      
     }
   };
 
   return (
-    <div>
+    <div className="auth">
       <h1>Register</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Name:</label>
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
-        </div>
-        <div>
-          <label>Email:</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        </div>
-        <button type="submit">Register</button>
+      <form>
+        <input
+          required
+          type="text"
+          placeholder="username"
+          name="username"
+          onChange={handleChange}
+        />
+        <input
+          required
+          type="email"
+          placeholder="email"
+          name="email"
+          onChange={handleChange}
+        />
+        <input
+          required
+          type="password"
+          placeholder="password"
+          name="password"
+          onChange={handleChange}
+        />
+        <button onClick={handleSubmit}>Register</button>
+        {err && <p>{err}</p>}
+        <span>
+          Do you have an account? <Link to="/login">Login</Link>
+        </span>
       </form>
     </div>
   );
-}
+};
 
 export default Register;
-
-

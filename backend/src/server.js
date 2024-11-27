@@ -8,7 +8,12 @@ require('dotenv').config();
 
 const app = express();
 
-app.use(cors());
+app.use(
+    cors({
+        origin: "http://localhost:3000",
+        credentials: true
+    })
+  );
 app.use(express.json());
 
 // session setup
@@ -34,8 +39,8 @@ const authRoute = require('./routes/authRoute');
 const resourceRoute = require('./routes/resourceRoute');
 
 // using the routes
-app.use('/routes/auth', authRoute);
-app.use('/routes/resource', resourceRoute);
+app.use('/api/auth', authRoute);
+app.use('/api/resource', resourceRoute);
 
 
 const PORT = process.env.PORT;

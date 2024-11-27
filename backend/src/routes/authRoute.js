@@ -1,7 +1,7 @@
 // importing modules
 const express = require('express');
 const router = express.Router();
-const { registerUser, loginUser, logoutUser } = require('../controllers/authController');
+const { registerUser, loginUser, logoutUser, getAllUsers } = require('../controllers/authController');
 
 // Register route
 router.post('/register', registerUser);
@@ -9,17 +9,12 @@ router.post('/register', registerUser);
 // Login route
 router.post('/login', loginUser);
 
+
 // Logout route
 router.post('/logout', logoutUser);
 
-// Protected route
-router.get('/profile', (req, res) => {
-  if (req.session.user) {
-    res.json({ user: req.session.user });
-  } else {
-    res.status(401).json({ message: 'Access Denied!' });
-  }
-});
+// get all registered users
+router.get('/users', getAllUsers);
 
 module.exports = router;
 
