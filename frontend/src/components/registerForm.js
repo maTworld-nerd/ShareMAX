@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import API from '../services/api';
 
-function Register() {
+function RegisterForm() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -11,9 +11,9 @@ function Register() {
     try {
       const response = await API.post('/auth/register', { name, email, password });
       console.log(response.data);
-      // Handling successful registration
+      // Handling successful registration 
     } catch (error) {
-      console.error('Registration failed:', error.response.data);
+      console.error('Registration failed:', error.response.data);  
     }
   };
 
@@ -39,4 +39,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default RegisterForm;
